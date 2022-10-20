@@ -36,9 +36,9 @@ namespace LOP.Core
             foreach (var type in types)
             {
                 var parent = type.BaseType;
-                Console.WriteLine("Init: " + type.FullName);
                 if (parent != null && parent.FullName == scriptType.FullName)
                 {
+                    Console.WriteLine("Init: " + type.FullName);
                     Script script = Activator.CreateInstance(type) as Script;
                     if (script != null) AddScript(script);
                 }

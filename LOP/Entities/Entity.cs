@@ -1,20 +1,39 @@
 ﻿using LOP.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LOP.GameSystem;
 
 namespace LOP.Entities
 {
     public abstract class Entity : IUpdatable
     {
         public EntityData EntityData { get; private set; }
+        public bool IsActive { get; private set; }
         public Entity()
         {
             EntityData = new EntityData(this); 
+            IsActive = true;
         }
-        public abstract void Update();
+        public virtual void OnSummon() { }
+        public virtual void Update()
+        {
+            if (IsActive)
+            {
+                if (EntityData.Health <= 0)
+                {
+                    OnDeath();
+                }
+            }
+        }
+        public virtual void OnDestroy() { }
+        public virtual void OnDeath() { }
+        public void Activate()
+        {
+            IsActive = true;
+        }
+        public void Destroy()
+        {
+            EntitySystem.Destroy(this);
+            IsActive = false;
+        }
     }
     public enum Nature { Fire, Water, Grass, Normal };
     
