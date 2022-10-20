@@ -10,7 +10,7 @@ namespace LOP.Entities
         public Entity()
         {
             EntityData = new EntityData(this); 
-            IsActive = true;
+            IsActive = false;
         }
         public virtual void OnSummon() { }
         public virtual void Update()
@@ -23,8 +23,14 @@ namespace LOP.Entities
                 }
             }
         }
-        public virtual void OnDestroy() { }
-        public virtual void OnDeath() { }
+        public virtual void OnDestroy() 
+        { 
+            IsActive = false;
+        }
+        public virtual void OnDeath()
+        {
+            Destroy();
+        }
         public void Activate()
         {
             IsActive = true;
@@ -32,7 +38,6 @@ namespace LOP.Entities
         public void Destroy()
         {
             EntitySystem.Destroy(this);
-            IsActive = false;
         }
     }
     public enum Nature { Fire, Water, Grass, Normal };

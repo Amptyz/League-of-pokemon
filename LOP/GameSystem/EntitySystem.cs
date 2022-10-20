@@ -11,6 +11,7 @@ namespace LOP.GameSystem
             {
                 Entity ne = Activator.CreateInstance(EntityManager.Instance.entityDic[name]) as Entity;
                 if (ne == null) return null;
+                ne.OnSummon();
                 EntityManager.Instance.AddEntity(ne);
                 return ne;
             }
