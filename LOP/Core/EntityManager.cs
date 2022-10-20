@@ -9,7 +9,18 @@ namespace LOP.Core
         private static EntityManager instance;
         public static EntityManager Instance
         {
-            get { return instance ??= new EntityManager(); }
+            get
+            {
+                if (instance == null)
+                {
+                    instance = FindScript<EntityManager>();
+                    if(instance == null)
+                    {
+                        instance = Instantiate<EntityManager>();
+                    }
+                }
+                return instance;
+            }
         }
         public List<Entity> entities;
         public Dictionary<string, Type> entityDic;

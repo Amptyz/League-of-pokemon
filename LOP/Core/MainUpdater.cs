@@ -25,6 +25,17 @@ namespace LOP.Core
                 Instance.scripts.Remove(script);
             }
         }
+        public static T? FindScript<T>() where T : Script
+        {
+            foreach(var script in Instance.scripts)
+            {
+                if(script.GetType() == typeof(T))
+                {
+                    return script as T;
+                }
+            }
+            return null;
+        }
         private MainUpdater()
         {
             scripts = new List<Script>();
@@ -79,6 +90,10 @@ namespace LOP.Core
             newt.Start();
             MainUpdater.AddScript(newt);
             return newt;
+        }
+        public static T? FindScript<T>() where T : Script
+        {
+            return MainUpdater.FindScript<T>();
         }
     }
 }
