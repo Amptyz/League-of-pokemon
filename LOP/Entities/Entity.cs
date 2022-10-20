@@ -1,6 +1,6 @@
 ﻿using LOP.Core;
 using LOP.GameSystem;
-
+using LOP.Skills;
 namespace LOP.Entities
 {
     public abstract class Entity : IUpdatable
@@ -12,6 +12,7 @@ namespace LOP.Entities
             EntityData = new EntityData(this); 
             IsActive = false;
         }
+        public List<Skill> SkillList;
         public virtual void OnSummon() { }
         public virtual void Update()
         {
@@ -49,7 +50,7 @@ namespace LOP.Entities
         public int Health;
         public int Swiftness;
         public Nature nature;
-
+        
         public Entity Entity { get; private set; }
         public EntityData(Entity entity)
         {

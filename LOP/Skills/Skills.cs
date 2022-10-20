@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LOP.Skills
 {
-    internal class Skills
+    public class Skill
     {
     }
 }
