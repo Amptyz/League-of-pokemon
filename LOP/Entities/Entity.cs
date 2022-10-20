@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LOP.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LOP.Entity
+namespace LOP.Entities
 {
     public abstract class Entity : IUpdatable
     {

@@ -1,4 +1,4 @@
-﻿namespace LOP
+﻿namespace LOP.Core
 {
     public interface IUpdatable
     {

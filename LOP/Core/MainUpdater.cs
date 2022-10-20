@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace LOP
+namespace LOP.Core
 {
     public class MainUpdater : IUpdatable
     {
@@ -14,11 +14,13 @@ namespace LOP
         private List<Script> scripts = new List<Script>();
         public static void AddScript(Script script)
         {
+            if (Instance.scripts.Contains(script)) return;
             Instance.scripts.Add(script);
         }
         public static void RemoveScript(Script script)
         {
-            if (Instance.scripts.Contains(script)) {
+            if (Instance.scripts.Contains(script))
+            {
                 script.OnDestroy();
                 Instance.scripts.Remove(script);
             }
@@ -59,6 +61,7 @@ namespace LOP
     }
     public abstract class Script : IUpdatable
     {
+        public Script() { }
         public virtual void Start() { }
         public virtual void Update() { }
         public virtual void OnDestroy() { }
@@ -70,12 +73,12 @@ namespace LOP
         {
             script.Destroy();
         }
-    }
-    public class TestScript : Script
-    {
-        public override void Update()
+        public static T Instantiate<T>() where T : Script , new()
         {
-            Console.WriteLine("TestPass!");
+            T newt = new();
+            newt.Start();
+            MainUpdater.AddScript(newt);
+            return newt;
         }
     }
 }
