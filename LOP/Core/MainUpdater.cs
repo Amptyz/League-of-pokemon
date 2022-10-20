@@ -57,6 +57,7 @@ namespace LOP.Core
         }
         public void Start()
         {
+            Time.Start();
             foreach (var script in scripts)
             {
                 script.Start();
@@ -64,6 +65,7 @@ namespace LOP.Core
         }
         public void Update()
         {
+            Time.Update();
             foreach (var script in scripts)
             {
                 script.Update();

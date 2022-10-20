@@ -16,7 +16,7 @@ namespace LOP.Scene
         }
         public override void Update()
         {
-            Console.WriteLine("Main Scene Working!");
+            Console.WriteLine(Time.DeltaTime);
         }
         public override void OnExit()
         {
