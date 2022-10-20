@@ -16,6 +16,7 @@ namespace LOP.Entity
         public abstract void Update();
     }
     public enum Nature { Fire, Water, Grass, Normal };
+    
     public class EntityData
     {
        
