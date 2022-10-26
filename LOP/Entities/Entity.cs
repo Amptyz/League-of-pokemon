@@ -1,18 +1,19 @@
 ﻿using LOP.Core;
 using LOP.GameSystem;
-using LOP.Skills;
+using LOP.Cards;
+
 namespace LOP.Entities
 {
     public abstract class Entity : IUpdatable
     {
         public EntityData EntityData { get; private set; }
         public bool IsActive { get; private set; }
+        public SkillCard SkillCard { get; protected set; }
         public Entity()
         {
             EntityData = new EntityData(this); 
             IsActive = false;
         }
-        public List<Skill> SkillList;
         public virtual void OnSummon() { }
         public virtual void Update()
         {

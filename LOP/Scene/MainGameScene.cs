@@ -13,6 +13,9 @@ namespace LOP.Scene
         {
             GameSceneSystem.mainScene = this;
             Console.WriteLine("Enter Main Scene!");
+            /*
+             * 在这里添加Entity
+             */
         }
         public override void Update()
         {
