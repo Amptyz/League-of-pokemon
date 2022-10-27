@@ -13,6 +13,7 @@ namespace LOP.GameSystem
                 if (ne == null) return null;
                 ne.OnSummon();
                 EntityManager.Instance.AddEntity(ne);
+                Console.WriteLine("Summon " + name + " successfully!");
                 return ne;
             }
             else return null;
@@ -29,6 +30,13 @@ namespace LOP.GameSystem
         {
             entity.OnDestroy();
             EntityManager.Instance.RemoveEntity(entity);
+        }
+        public static void ActivateAll()
+        {
+            foreach (var entity in EntityManager.Instance.entities)
+            {
+                entity.Activate();
+            }
         }
     }
 }

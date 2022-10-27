@@ -52,14 +52,13 @@ namespace LOP.Core
                 var parent = type.BaseType;
                 if (parent != null && parent.FullName == entityType.FullName)
                 {
-                    Console.WriteLine("Init: " + type.FullName);
-                    entityDic[type.Name] = type;
+                    Console.WriteLine("Init: " + type.FullName + " As " + type.Name);
+                    entityDic.Add(type.Name, type);
                 }
             }
         }
         public override void Update()
         {
-            Console.WriteLine("EntityManager.Update()");
             foreach (var entity in entities)
             {
                 entity.Update();

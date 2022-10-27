@@ -5,9 +5,14 @@ namespace LOP.GameSystem
 {
     public class GameInfoSystem
     {
+        private static GameInfoSystem instance;
+        public static GameInfoSystem Instance
+        {
+            get { return instance ??= new GameInfoSystem(); }
+        }
         public GameTeam Blue;
         public GameTeam Red;
-        public GameInfoSystem()
+        private GameInfoSystem()
         {
             Blue = new GameTeam();
             Red = new GameTeam();

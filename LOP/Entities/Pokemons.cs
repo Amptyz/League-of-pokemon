@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LOP.Cards;
 
 namespace LOP.Entities
 {
@@ -10,11 +6,17 @@ namespace LOP.Entities
     {
         public FireDragon()
         {
+            EntityData.Name = "Fire Dragon";
             EntityData.MaxHealth = 1000;
             EntityData.Health = 1000;
-            EntityData.Swiftness = 8;
-            EntityData.nature = Nature.Fire;
+            EntityData.Attack = 120;
+            EntityData.AttackSpeed = 24;
         }
-        
+    }
+    public class FireBall : SkillCard
+    {
+        public FireBall(Entity entity) : base(entity)
+        {
+        }
     }
 }

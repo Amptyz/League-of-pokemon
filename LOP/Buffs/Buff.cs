@@ -1,5 +1,5 @@
 ﻿using LOP.Entities;
-using LOP.Skills;
+using LOP.Cards;
 
 namespace LOP.Buffs
 {
@@ -14,16 +14,16 @@ namespace LOP.Buffs
     {
         public Entity Entity { get; private set; }
         public Entity OriginEntity { get; private set; }
-        public Skill OriginSkill { get; private set; }
+        public Card OriginCard { get; private set; }
         public String Name { get; protected set; }
         public BuffType Type { get; protected set; }
-        public Buff(Entity entity,Entity originEntity, Skill originSkill)
+        public Buff(Entity entity,Entity originEntity, Card originCard)
         {
             Name = "Default Buff";
             Type = BuffType.Others;
             Entity = entity;
             OriginEntity = originEntity;
-            OriginSkill = originSkill;
+            OriginCard = originCard;
         }
         public virtual void OnCalcDamageAsSource() { }
         public virtual void OnCalcDamageAsTarget() { }

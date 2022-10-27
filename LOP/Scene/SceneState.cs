@@ -24,6 +24,9 @@ namespace LOP.Scene
         public override void OnEnter()
         {
             Console.WriteLine("DefaultScene Enter!");
+        }
+        public override void Update()
+        {
             Manager.ChangeState(new MainGameScene(Manager));
         }
     }
